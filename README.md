@@ -23,3 +23,17 @@
 ---
   1. 前端介面簡易並可觸發功能即可，重點在後端server程式寫法
   2. 請針對要求製作出基本功能即可，多寫的功能不會加分也不會扣分。例如：使用者登入、轉帳、利息計算、多國幣別等... 這些就算多寫也不會加分
+
+測試方式
+---
+- 採用 apache-benchmark ([ab](https://httpd.apache.org/docs/2.4/programs/ab.html)) 工具
+
+1. 請先安裝
+
+  > sudo apt-get update
+
+  > sudo apt-get install apache2-utils
+
+2. 簡易使用方式
+
+  > ab -c 3 -n 1000 http://網址/
