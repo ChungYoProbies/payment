@@ -17,7 +17,19 @@
 
 其他非必需加分條件
 ---
-  - 測試碼 (請參考[網址](https://phpunit.de))
+  - 測試碼 (請參考[網址](https://phpunit.de))(請[閱讀 4.8 的文件](https://phpunit.de/manual/4.8/en/index.html))
+
+1. 建議採用 composer 安裝
+
+> composer global require "phpunit/phpunit=4.8.*"
+
+> // 安裝完成的執行檔會放在 ~/.composer/vendor/bin/
+
+2. 建立一個檔案來測試，例如：StackTest.php
+
+3. 執行測試碼
+
+> ~/.composer/vendor/bin/phpunit StackTest.php
 
 注意事項
 ---
