@@ -49,3 +49,46 @@
 2. 簡易使用方式
 
   > ab -c 3 -n 1000 http://網址/
+
+如何保證餘額正確?
+---
+* increment/decrement 語法
+
+  > UPDATE `account` SET `balance` = `balance` + ? WHERE id = 1
+
+  > UPDATE `account` SET `balance` = `balance` - ? WHERE id = 1 AND ? < `balance`
+
+* 透過版本號來確保更新的資料
+
+  > UPDATE `account` SET `balance` = `balance` + ?, `version` = `version` + 1 WHERE id = 1 AND `version` = ?
+
+* 鎖定資料
+
+    - SELECT ... FOR UPDATE
+    
+      > BEGIN;
+    
+      > SELECT * FROM `account` WHERE id = 1 FOR UPDATE;
+      
+      > UPDATE `account` SET `balance` = `balance` + ? WHERE id = 1;
+      
+      > COMMIT;
+    
+    - SELECT ... LOCK IN SHARE MODE
+    
+      > BEGIN;
+    
+      > SELECT * FROM `account` WHERE id = 1 LOCK IN SHARE MODE;
+      
+      > UPDATE `account` SET `balance` = `balance` + ? WHERE id = 1;
+      
+      > COMMIT;
+    
+    - LOCK TABLE
+    
+      > LOCK TABLES `account` WRITE;
+      
+      > UPDATE `account` SET `balnce` = `balance` + ? WHERE id = 1;
+      
+      > UNLOCK TABLES;
+
