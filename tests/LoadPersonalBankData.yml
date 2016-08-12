@@ -1,0 +1,20 @@
+account:
+  -
+    id: 1
+    username: "tester"
+    balance: 0
+    version: 1
+
+detail:
+  -
+    id: 1
+    account_id: 1
+    amount: 10
+    balance: 10
+    created_at: "2010-04-24 17:15:23"
+  -
+    id: 2
+    account_id: 1
+    amount: -10
+    balance: 0
+    created_at: "2010-04-24 17:16:23"
